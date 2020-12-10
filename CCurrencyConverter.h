@@ -1,5 +1,6 @@
 #pragma once
-class CurrencyConverter
+#include <string>
+class CCurrencyConverter
 {
 public:
 	double convert(std::string from, std::string to, double amount);

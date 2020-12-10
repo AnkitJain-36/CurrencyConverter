@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CurrencyConverter.cpp" />
+    <ClCompile Include="CCurrencyConverter.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="CRestUsingCurl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CurrencyConverter.h" />
+    <ClInclude Include="CCurrencyConverter.h" />
+    <ClInclude Include="CRestUsingCurl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
