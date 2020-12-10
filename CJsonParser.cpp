@@ -19,7 +19,7 @@ void CJsonParser::setInput(const std::string& input)
     const std::unique_ptr<Json::CharReader> reader(builder.newCharReader());
     if (!reader->parse(input.c_str(), input.c_str() + input.length(), &m_root, &errs))
     {
-        std::cout << "error" << std::endl;
+        std::cout << "ERROR in parsing!" << std::endl << errs << std::endl;
         return;
     }
 }
