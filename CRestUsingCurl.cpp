@@ -27,11 +27,6 @@ bool CRestUsingCurl::init()
     return false;
 }
 
-std::string CRestUsingCurl::post()
-{
-    return std::string();
-}
-
 inline size_t CRestUsingCurl::writeCallback(void* contents, size_t size, size_t nmemb, void* userp)
 {
     auto retVal = size * nmemb;
