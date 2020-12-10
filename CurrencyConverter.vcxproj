@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CCurrencyConverter.cpp" />
+    <ClCompile Include="CJsonParser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CRestUsingCurl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCurrencyConverter.h" />
+    <ClInclude Include="CJsonParser.h" />
     <ClInclude Include="CRestUsingCurl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

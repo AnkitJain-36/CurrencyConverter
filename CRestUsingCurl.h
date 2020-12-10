@@ -1,3 +1,5 @@
+// Uses curl library for running REST
+
 #include "curl/curl.h"
 #include <string>
 
