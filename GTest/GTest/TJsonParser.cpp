@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "../../CJsonParser.h"
 
-TEST(getCurrencyConversionFactor, noInputDefined) {
+TEST(getValues, noInputDefined) {
 	CJsonParser parser("EUR");
 	EXPECT_EQ(parser.getValues(), "");
 }
 
-TEST(getCurrencyConversionFactor, inputDefined) {
+TEST(getValues, inputDefined) {
 	const auto input = "{\
 		\"success\":true,\
 		\"timestamp\" : 1607599745,\
@@ -20,7 +20,7 @@ TEST(getCurrencyConversionFactor, inputDefined) {
 	EXPECT_EQ(parser.getValues(), input);
 }
 
-TEST(getCurrencyConversionFactor, inputDefinedWithDelay) {
+TEST(getValues, inputDefinedWithDelay) {
 	const auto input = "{\
 		\"success\":true,\
 		\"timestamp\" : 1607599745,\
