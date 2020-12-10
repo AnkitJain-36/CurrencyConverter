@@ -4,6 +4,10 @@
 #include <iostream>
 #include "CCurrencyConverter.h"
 
+/// <summary>
+/// main function
+/// </summary>
+/// <returns>0 on successful execution</returns>
 int main()
 {
     const std::string euroCurrecyCode = "EUR";
