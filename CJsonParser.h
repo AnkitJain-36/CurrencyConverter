@@ -5,6 +5,11 @@
 #pragma once
 class CJsonParser
 {
-	Json::Value root;
+protected:
+	Json::Value m_root;
+public:
+	CJsonParser();
+	CJsonParser(const std::string& input);
+	void setInput(const std::string& input);
 };
 

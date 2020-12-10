@@ -6,7 +6,7 @@
 
 int main()
 {
-    CCurrencyConverter converter;
+    CCurrencyConverter::convert("EUR", "USD", 50);
 
     // Get values
 

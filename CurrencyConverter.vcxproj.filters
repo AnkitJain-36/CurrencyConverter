@@ -27,6 +27,9 @@
     <ClCompile Include="CJsonParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CJsonCurrencyParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCurrencyConverter.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CJsonParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CJsonCurrencyParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

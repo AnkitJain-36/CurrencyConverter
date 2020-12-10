@@ -3,6 +3,6 @@
 class CCurrencyConverter
 {
 public:
-	double convert(std::string from, std::string to, double amount);
+	static double convert(std::string from, std::string to, double amount);
 };
 

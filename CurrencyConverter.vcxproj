@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CCurrencyConverter.cpp" />
+    <ClCompile Include="CJsonCurrencyParser.cpp" />
     <ClCompile Include="CJsonParser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CRestUsingCurl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCurrencyConverter.h" />
+    <ClInclude Include="CJsonCurrencyParser.h" />
     <ClInclude Include="CJsonParser.h" />
     <ClInclude Include="CRestUsingCurl.h" />
   </ItemGroup>
