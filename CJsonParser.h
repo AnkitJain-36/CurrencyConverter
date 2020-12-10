@@ -11,5 +11,6 @@ public:
 	CJsonParser();
 	CJsonParser(const std::string& input);
 	void setInput(const std::string& input);
+	std::string getValues();
 };
 

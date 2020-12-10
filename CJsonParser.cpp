@@ -23,3 +23,8 @@ void CJsonParser::setInput(const std::string& input)
         return;
     }
 }
+
+std::string CJsonParser::getValues()
+{
+    return m_root.toStyledString();
+}
