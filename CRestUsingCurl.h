@@ -7,7 +7,7 @@
 class CRestUsingCurl
 {
     const std::string m_server = "http://data.fixer.io/api/";
-    const std::string m_latestCommand = "latest";
+    const std::string m_latestCommand = "latest";   // convert command is not available
     const std::string m_accessKey = "4bd80c62e4c223602f9038e5512e182d";
 
     std::string m_fromCurrenyCode;
