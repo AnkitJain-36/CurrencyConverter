@@ -22,11 +22,7 @@ int main()
 
         // Convert and Display Values
         std::cout << "Result:" << CCurrencyConverter::convert(fromCurrencyCode, toCurrencyCode, amount) << std::endl;
-    } while (-1);
-
-    // Convert using converter
-
-    // Display
+    } while (true);
 
     return 0;
 }
