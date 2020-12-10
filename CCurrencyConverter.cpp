@@ -1,7 +1,9 @@
 #include "CCurrencyConverter.h"
 #include "CRestUsingCurl.h"
-double CCurrencyConverter::convert(std::string from, std::string to, double amount)
+
+double CCurrencyConverter::convert(const std::string& from, const std::string& to, const double amount)
 {
 	CRestUsingCurl restObj(from, to);
-	return 0.0;
+	double conversionFactor = restObj.getConversionFactor();
+	return amount * conversionFactor;
 }

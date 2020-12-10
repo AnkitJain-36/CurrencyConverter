@@ -14,7 +14,9 @@ bool CRestUsingCurl::init()
         curl_easy_setopt(m_curl,
             CURLOPT_WRITEFUNCTION,
             writeCallback);
-        curl_easy_setopt(m_curl, CURLOPT_WRITEDATA, &m_readBuffer);
+        curl_easy_setopt(m_curl, 
+            CURLOPT_WRITEDATA, 
+            &m_readBuffer);
         return true;
     }
     return false;
@@ -46,6 +48,11 @@ CRestUsingCurl::CRestUsingCurl(const std::string& from, const std::string& to) :
         //std::cout << readBuffer << std::endl;
 
         CJsonCurrencyParser jsonReader("EUR", m_readBuffer);
-        std::cout << jsonReader.getCurrencyConversionFactor("USD") << std::endl;
+        m_conversionFactor = jsonReader.getCurrencyConversionFactor(to);
     }
+}
+
+double CRestUsingCurl::getConversionFactor()
+{
+    return m_conversionFactor;
 }

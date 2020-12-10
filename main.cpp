@@ -6,9 +6,23 @@
 
 int main()
 {
-    CCurrencyConverter::convert("EUR", "USD", 50);
+    do {
+        std::string fromCurrencyCode;
+        std::string toCurrencyCode;
+        double amount;
 
-    // Get values
+        // Get values
+        std::cout << "Enter Values For Currency Conversion: \n";
+        std::cout << "From:";
+        std::cin >> fromCurrencyCode;
+        std::cout << "To:";
+        std::cin >> toCurrencyCode;
+        std::cout << "Amount:";
+        std::cin >> amount;
+
+        // Convert and Display Values
+        std::cout << "Result:" << CCurrencyConverter::convert(fromCurrencyCode, toCurrencyCode, amount) << std::endl;
+    } while (-1);
 
     // Convert using converter
 
