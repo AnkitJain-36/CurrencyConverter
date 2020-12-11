@@ -10,11 +10,23 @@ CRestUsingCurl& CRestUsingCurl::instance() {
 }
 
 /// <summary>
+/// Virtual destructor
+/// </summary>
+
+inline CRestUsingCurl::~CRestUsingCurl()
+{
+    // Cleanup curl after use
+    curl_easy_cleanup(m_curl);
+}
+
+/// <summary>
 /// Constructor
 /// </summary>
 CRestUsingCurl::CRestUsingCurl()
 {
     m_jsonReader = std::make_unique<CJsonCurrencyParser>();
+    //initialize curl
+    m_curl = curl_easy_init();
 }
 
 /// <summary>
@@ -25,8 +37,7 @@ CRestUsingCurl::CRestUsingCurl()
 /// <returns>Conversion Factor</returns>
 double CRestUsingCurl::getConversionFactor(const std::string& from, const std::string& to)
 {
-    //initialize
-    m_curl = curl_easy_init();
+
 
     if (m_curl)
     {
@@ -50,9 +61,6 @@ double CRestUsingCurl::getConversionFactor(const std::string& from, const std::s
 
         // Peform cURL function
         m_res = curl_easy_perform(m_curl);
-
-        // Cleanup after use
-        curl_easy_cleanup(m_curl);
 
         // Parse resply
         m_jsonReader->setInput(readBuffer);

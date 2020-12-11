@@ -17,11 +17,6 @@ public:
     static CRestUsingCurl& instance();
 
     /// <summary>
-    /// Virtual destructor
-    /// </summary>
-    virtual ~CRestUsingCurl() {}
-
-    /// <summary>
     /// Get conversion factor for converting a currency from a defined currency to another
     /// </summary>
     /// <param name="from">Base currency code</param>
@@ -35,10 +30,16 @@ private:
     /// </summary>
     CRestUsingCurl();
 
+    /// <summary>
+    /// Destructor
+    /// </summary>
+    virtual ~CRestUsingCurl();
+
     // Delete copy constructor and disable copy using '=' operator
     CRestUsingCurl(const CRestUsingCurl&) = delete;
     CRestUsingCurl& operator=(const CRestUsingCurl&) = delete;
 
+protected:
     /// <summary>
     /// curl object
     /// </summary>
