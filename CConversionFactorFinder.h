@@ -1,6 +1,8 @@
 #include <string>
 #include "curl/curl.h"
+#include "CCurlProxy.h"
 #include "CJsonCurrencyParser.h"
+#include "memory"
 
 #pragma once
 /// <summary>
@@ -12,7 +14,7 @@ public:
     /// <summary>
     /// Constructor
     /// </summary>
-    CConversionFactorFinder() = default;
+    CConversionFactorFinder();
 
     /// <summary>
     /// Destructor
@@ -30,6 +32,11 @@ public:
     /// <summary>
     /// Json parser
     /// </summary>
-    CJsonCurrencyParser m_jsonReader;
+    std::shared_ptr<CJsonCurrencyParser> m_jsonReader;
+
+    /// <summary>
+    /// Curl Proxy
+    /// </summary>
+    CCurlProxy* m_curlProxy;
 };
 

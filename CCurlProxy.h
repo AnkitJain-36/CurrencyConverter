@@ -2,7 +2,7 @@
 
 #include "curl/curl.h"
 #include "string"
-
+#include "memory"
 class CCurlProxy
 {
 public:
@@ -18,16 +18,19 @@ public:
     /// <param name="from">Base currency code</param>
     /// <param name="to">Target currency code</param>
     /// <returns>Curl Request Reply</returns>
-    std::string executeCurlRequest(const std::string& from, const std::string& to);
-
-private:
-    CCurlProxy();
-    virtual ~CCurlProxy();
-    // Delete copy constructor and disable copy using '=' operator
-    CCurlProxy(const CCurlProxy&) = delete;
-    CCurlProxy& operator=(const CCurlProxy&) = delete;
+    virtual std::string executeCurlRequest(const std::string& from, const std::string& to);
 
 protected:
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    CCurlProxy();
+
+    /// <summary>
+    /// Destructor
+    /// </summary>
+    virtual ~CCurlProxy();
+
     /// <summary>
     /// curl object
     /// </summary>
