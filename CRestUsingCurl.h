@@ -60,7 +60,7 @@ private:
     std::string generateRestRequestURL(const std::string& from);
 
     /// <summary>
-    /// WriteCallback function for cURL
+    /// WriteCallback function for cURL CURLOPT_WRITEFUNCTION
     /// </summary>
     /// <param name="contents">Data received</param>
     /// <param name="size">Size of each memeber</param>

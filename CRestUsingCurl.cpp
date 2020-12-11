@@ -1,15 +1,28 @@
 #include "CRestUsingCurl.h"
 
+/// <summary>
+/// Get singleton instance
+/// </summary>
+/// <returns>Singleton instance</returns>
 CRestUsingCurl& CRestUsingCurl::instance() {
     static CRestUsingCurl instance;
     return instance;
 }
 
+/// <summary>
+/// Constructor
+/// </summary>
 CRestUsingCurl::CRestUsingCurl()
 {
     m_jsonReader = std::make_unique<CJsonCurrencyParser>();
 }
 
+/// <summary>
+/// Get conversion factor for converting a currency from a defined currency to another
+/// </summary>
+/// <param name="from">Base currency code</param>
+/// <param name="to">Target currency code</param>
+/// <returns>Conversion Factor</returns>
 double CRestUsingCurl::getConversionFactor(const std::string& from, const std::string& to)
 {
     //initialize
@@ -50,6 +63,11 @@ double CRestUsingCurl::getConversionFactor(const std::string& from, const std::s
     return -1;
 }
 
+/// <summary>
+/// Generates the REST command URL
+/// </summary>
+/// <param name="from">Base currency code</param>
+/// <returns>Rest command URL</returns>
 std::string CRestUsingCurl::generateRestRequestURL(const std::string& from)
 {
     const std::string server = "http://data.fixer.io/api/";
@@ -63,6 +81,14 @@ std::string CRestUsingCurl::generateRestRequestURL(const std::string& from)
     return restRequestURL;
 }
 
+/// <summary>
+/// WriteCallback function for cURL CURLOPT_WRITEFUNCTION
+/// </summary>
+/// <param name="contents">Data received</param>
+/// <param name="size">Size of each memeber</param>
+/// <param name="nmemb">Number of members</param>
+/// <param name="userp">User reply</param>
+/// <returns>Size of reply</returns>
 inline size_t CRestUsingCurl::writeCallback(void* contents, size_t size, size_t nmemb, void* userp)
 {
     auto retVal = size * nmemb;
