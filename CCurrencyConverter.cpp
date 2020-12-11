@@ -1,5 +1,5 @@
 #include "CCurrencyConverter.h"
-#include "CRestUsingCurl.h"
+#include "CConversionFactorFinder.h"
 
 /// <summary>
 /// Static function for converting defined amount of money from one courrency to another
@@ -10,6 +10,7 @@
 /// <returns>converted amount</returns>
 double CCurrencyConverter::convert(const std::string& from, const std::string& to, const double amount)
 {
-	double conversionFactor = CRestUsingCurl::instance().getConversionFactor(from, to);
+	CConversionFactorFinder factorFinder;
+	double conversionFactor = factorFinder.getConversionFactor(from, to);
 	return amount * conversionFactor;
 }

@@ -1,43 +1,31 @@
-#include <string>
-#include "curl/curl.h"
-#include "CJsonCurrencyParser.h"
-#include "memory"
-
 #pragma once
-/// <summary>
-/// Uses cURL for running REST commands
-/// </summary>
-class CRestUsingCurl
+
+#include "curl/curl.h"
+#include "string"
+
+class CCurlProxy
 {
 public:
     /// <summary>
     /// Get singleton instance
     /// </summary>
     /// <returns>Singleton instance</returns>
-    static CRestUsingCurl& instance();
+    static CCurlProxy& instance();
 
     /// <summary>
-    /// Get conversion factor for converting a currency from a defined currency to another
+    /// Execute curl request
     /// </summary>
     /// <param name="from">Base currency code</param>
     /// <param name="to">Target currency code</param>
-    /// <returns>Conversion Factor</returns>
-    double getConversionFactor(const std::string& from, const std::string& to);
+    /// <returns>Curl Request Reply</returns>
+    std::string executeCurlRequest(const std::string& from, const std::string& to);
 
 private:
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    CRestUsingCurl();
-
-    /// <summary>
-    /// Destructor
-    /// </summary>
-    virtual ~CRestUsingCurl();
-
+    CCurlProxy();
+    virtual ~CCurlProxy();
     // Delete copy constructor and disable copy using '=' operator
-    CRestUsingCurl(const CRestUsingCurl&) = delete;
-    CRestUsingCurl& operator=(const CRestUsingCurl&) = delete;
+    CCurlProxy(const CCurlProxy&) = delete;
+    CCurlProxy& operator=(const CCurlProxy&) = delete;
 
 protected:
     /// <summary>
@@ -48,10 +36,6 @@ protected:
     /// cURL code obtained on executing command
     /// </summary>
     CURLcode m_res;
-    /// <summary>
-    /// Unnique pointer to json parser
-    /// </summary>
-    std::unique_ptr<CJsonCurrencyParser> m_jsonReader;
 
     /// <summary>
     /// Generates the REST command URL

@@ -1,44 +1,16 @@
-#include "CRestUsingCurl.h"
+#include "CCurlProxy.h"
 
 /// <summary>
 /// Get singleton instance
 /// </summary>
 /// <returns>Singleton instance</returns>
-CRestUsingCurl& CRestUsingCurl::instance() {
-    static CRestUsingCurl instance;
+CCurlProxy& CCurlProxy::instance() {
+    static CCurlProxy instance;
     return instance;
 }
 
-/// <summary>
-/// Virtual destructor
-/// </summary>
-
-inline CRestUsingCurl::~CRestUsingCurl()
+std::string CCurlProxy::executeCurlRequest(const std::string& from, const std::string& to)
 {
-    // Cleanup curl after use
-    curl_easy_cleanup(m_curl);
-}
-
-/// <summary>
-/// Constructor
-/// </summary>
-CRestUsingCurl::CRestUsingCurl()
-{
-    m_jsonReader = std::make_unique<CJsonCurrencyParser>();
-    //initialize curl
-    m_curl = curl_easy_init();
-}
-
-/// <summary>
-/// Get conversion factor for converting a currency from a defined currency to another
-/// </summary>
-/// <param name="from">Base currency code</param>
-/// <param name="to">Target currency code</param>
-/// <returns>Conversion Factor</returns>
-double CRestUsingCurl::getConversionFactor(const std::string& from, const std::string& to)
-{
-
-
     if (m_curl)
     {
         auto requestUrl = generateRestRequestURL(from);
@@ -62,13 +34,22 @@ double CRestUsingCurl::getConversionFactor(const std::string& from, const std::s
         // Peform cURL function
         m_res = curl_easy_perform(m_curl);
 
-        // Parse resply
-        m_jsonReader->setInput(readBuffer);
-        // Get conversion factor
-        return m_jsonReader->getCurrencyConversionFactor(to);
+        return readBuffer;
     }
 
-    return -1;
+    return "";
+}
+
+CCurlProxy::CCurlProxy()
+{
+    //initialize curl
+    m_curl = curl_easy_init();
+}
+
+CCurlProxy::~CCurlProxy()
+{
+    // Cleanup curl after use
+    curl_easy_cleanup(m_curl);
 }
 
 /// <summary>
@@ -76,7 +57,7 @@ double CRestUsingCurl::getConversionFactor(const std::string& from, const std::s
 /// </summary>
 /// <param name="from">Base currency code</param>
 /// <returns>Rest command URL</returns>
-std::string CRestUsingCurl::generateRestRequestURL(const std::string& from)
+std::string CCurlProxy::generateRestRequestURL(const std::string& from)
 {
     const std::string server = "http://data.fixer.io/api/";
     const std::string latestCommand = "latest";   // convert command is not available
@@ -97,7 +78,7 @@ std::string CRestUsingCurl::generateRestRequestURL(const std::string& from)
 /// <param name="nmemb">Number of members</param>
 /// <param name="userp">User reply</param>
 /// <returns>Size of reply</returns>
-inline size_t CRestUsingCurl::writeCallback(void* contents, size_t size, size_t nmemb, void* userp)
+inline size_t CCurlProxy::writeCallback(void* contents, size_t size, size_t nmemb, void* userp)
 {
     auto retVal = size * nmemb;
     if (!retVal)
