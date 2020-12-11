@@ -7,29 +7,22 @@
 class CJsonCurrencyParser :
     public CJsonParser
 {
-    /// <summary>
-    /// Base currency code
-    /// </summary>
-    std::string m_base;
 public:
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="base">Base currency code</param>
-    CJsonCurrencyParser(const std::string& base);
+    CJsonCurrencyParser();
 
     /// <summary>
-    /// Constructor
+    /// Virtual destructor
     /// </summary>
-    /// <param name="base">Base currency code</param>
-    /// <param name="input">Input string for parsin (in Json format)</param>
-    CJsonCurrencyParser(const std::string& base, const std::string& input);
+    virtual ~CJsonCurrencyParser() = default;
 
     /// <summary>
-    /// Returns conversion factor for converting base currency to defined currency
+    /// Returns conversion factor for converting base currency to defined target currency
     /// </summary>
     /// <param name="currencyCode">Currency code of target currency</param>
     /// <returns>Conversion factor</returns>
-    double getCurrencyConversionFactor(const std::string& currencyCode);
+    virtual double getCurrencyConversionFactor(const std::string& currencyCode);
 };
 

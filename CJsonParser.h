@@ -25,6 +25,11 @@ public:
 	CJsonParser(const std::string& input);
 
 	/// <summary>
+	/// Virtual Destructor
+	/// </summary>
+	virtual ~CJsonParser() {}
+
+	/// <summary>
 	/// Defines the input string
 	/// </summary>
 	/// <param name="input">input string in Json format</param>

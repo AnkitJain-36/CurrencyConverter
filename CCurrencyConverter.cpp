@@ -10,7 +10,6 @@
 /// <returns>converted amount</returns>
 double CCurrencyConverter::convert(const std::string& from, const std::string& to, const double amount)
 {
-	CRestUsingCurl restObj(from, to);
-	double conversionFactor = restObj.getConversionFactor();
+	double conversionFactor = CRestUsingCurl::instance().getConversionFactor(from, to);
 	return amount * conversionFactor;
 }
