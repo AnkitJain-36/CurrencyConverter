@@ -21,21 +21,21 @@
     <ClCompile Include="CCurrencyConverter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CRestUsingCurl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CJsonParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CJsonCurrencyParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CCurlProxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CConversionFactorFinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCurrencyConverter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CRestUsingCurl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CJsonParser.h">
@@ -44,5 +44,14 @@
     <ClInclude Include="CJsonCurrencyParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CCurlProxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CConversionFactorFinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
