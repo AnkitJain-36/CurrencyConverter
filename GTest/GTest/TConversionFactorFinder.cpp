@@ -43,10 +43,11 @@ protected:
 	MockCurlProxy* m_curlProxy;
 };
 
-TEST_F(RestUsingCurlTest, iniTest)
+TEST_F(RestUsingCurlTest, getConversionFactorTest)
 {
 	CConversionFactorFinder factorFinder;
-	factorFinder.m_jsonReader = m_jsonCurrencyParser;
+
+	// Mock curl proxy
 	factorFinder.m_curlProxy = m_curlProxy;
 	ON_CALL(*m_curlProxy, executeCurlRequest).WillByDefault([](const std::string& from, const std::string& to) {
 		return std::string("{\
@@ -59,9 +60,29 @@ TEST_F(RestUsingCurlTest, iniTest)
 			}\
 			}");
 		});
-	EXPECT_CALL(*(m_jsonCurrencyParser.get()), getCurrencyConversionFactor(_)).Times(1);
 	EXPECT_CALL(*m_curlProxy, executeCurlRequest(_, _)).Times(1);
 
+	// Execute getConversionFactor(_, _) function
+	auto conversionFactor = factorFinder.getConversionFactor("EUR", "USD");
+	EXPECT_EQ(conversionFactor, 1.209183);
+}
+
+TEST_F(RestUsingCurlTest, getCurrencyConversionFactorTest)
+{
+	CConversionFactorFinder factorFinder;
+
+	// To prevent actual curl request, mock curl proxy
+	factorFinder.m_curlProxy = m_curlProxy;
+	EXPECT_CALL(*m_curlProxy, executeCurlRequest(_, _)).Times(1);
+
+	// Mock Json Reader
+	factorFinder.m_jsonReader = m_jsonCurrencyParser;
+	ON_CALL(*m_jsonCurrencyParser, getCurrencyConversionFactor).WillByDefault([](const std::string& currencyCode) {
+			return 1.209183;
+		});
+	EXPECT_CALL(*m_jsonCurrencyParser, getCurrencyConversionFactor(_)).Times(1);
+
+	// Execute getConversionFactor(_, _) function
 	auto conversionFactor = factorFinder.getConversionFactor("EUR", "USD");
 	EXPECT_EQ(conversionFactor, 1.209183);
 }
