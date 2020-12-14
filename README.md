@@ -12,6 +12,7 @@ jsoncpp project link: https://github.com/open-source-parsers/jsoncpp
 curl project link: https://github.com/curl/curl
 
 Design:
+
 main.cpp contains the main function which obtains information from the user via command prompt and forwards the info to others classes for processing. The result is then displayed on comand prompt.
 
 CCurrencyConverter acts as a utility file which allows for a static call to convert currency amount from one currency to another. It creates a CConversionFactorFinder class object for obtaining currency conversion factor.
