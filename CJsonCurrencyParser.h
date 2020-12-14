@@ -11,7 +11,7 @@ public:
     /// <summary>
     /// Constructor
     /// </summary>
-    CJsonCurrencyParser();
+    CJsonCurrencyParser() = default;
 
     /// <summary>
     /// Virtual destructor

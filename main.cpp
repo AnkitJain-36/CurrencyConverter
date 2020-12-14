@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "CCurrencyConverter.h"
+#include <algorithm>
 
 /// <summary>
 /// main function
@@ -10,7 +11,7 @@
 /// <returns>0 on successful execution</returns>
 int main()
 {
-    const std::string euroCurrecyCode = "EUR";
+    const std::string euroCurrecyCode{ "EUR" };
     do {
         std::string fromCurrencyCode = euroCurrecyCode;
         std::string toCurrencyCode;
@@ -22,15 +23,19 @@ int main()
         std::cin >> amount;
         std::cout << "From:";
         //std::cin >> fromCurrencyCode;
-        std::cout << "EUR" << std::endl;
+        std::cout << euroCurrecyCode << std::endl;
         std::cout << "To:";
         std::cin >> toCurrencyCode;
 
         // Convert and Display Values
         auto convertedValue = CCurrencyConverter::convert(fromCurrencyCode, toCurrencyCode, amount);
-        if (convertedValue == 0.0)
+        if (-1 == convertedValue)
         {
-            std::cout << "Error: Country Code not found." << std::endl;
+            std::cout << "Error: REST API failed. Is your internet connection working?" << std::endl; 
+        }
+        else if (0 == convertedValue)
+        {
+            std::cout << "Error: Valid Country Code to Conversion Value mapping not found." << std::endl;
         }
         else
         {
@@ -40,7 +45,8 @@ int main()
         std::string cont;
         std::cout << "Countinue (y/n):";
         std::cin >> cont;
-        if (cont != "y")
+        std::transform(cont.begin(), cont.end(), cont.begin(), ::toupper);   // String to upper
+        if ("Y" != cont && "YES" != cont)
             break;
 
         std::cout << std::endl;

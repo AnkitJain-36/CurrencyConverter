@@ -10,7 +10,14 @@
 /// <returns>converted amount</returns>
 double CCurrencyConverter::convert(const std::string& from, const std::string& to, const double amount)
 {
-	CConversionFactorFinder factorFinder;
-	double conversionFactor = factorFinder.getConversionFactor(from, to);
-	return amount * conversionFactor;
+	double conversionFactor = CConversionFactorFinder::instance().getConversionFactor(from, to);
+	// CURL request failure
+	if (-1 == conversionFactor)
+	{
+		return -1;
+	}
+	else
+	{
+		return amount * conversionFactor;
+	}
 }

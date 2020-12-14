@@ -3,14 +3,6 @@
 #include <iostream>
 
 /// <summary>
-/// Constructor (default)
-/// </summary>
-CJsonParser::CJsonParser()
-{
-    // do nothing
-}
-
-/// <summary>
 /// Parameterized constructor with json string defined
 /// </summary>
 /// <param name="input">input string in Json format</param>

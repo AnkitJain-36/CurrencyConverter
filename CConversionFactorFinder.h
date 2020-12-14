@@ -12,14 +12,10 @@ class CConversionFactorFinder
 {
 public:
     /// <summary>
-    /// Constructor
+    /// Returns singleton instance
     /// </summary>
-    CConversionFactorFinder();
-
-    /// <summary>
-    /// Destructor
-    /// </summary>
-    virtual ~CConversionFactorFinder() = default;
+    /// <returns>Singleton instance</returns>
+    static CConversionFactorFinder& instance();
 
     /// <summary>
     /// Get conversion factor for converting a currency from a defined currency to another
@@ -38,5 +34,21 @@ public:
     /// Curl Proxy
     /// </summary>
     CCurlProxy* m_curlProxy;
+
+private:
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    CConversionFactorFinder();
+
+    /// <summary>
+    /// Destructor
+    /// </summary>
+    virtual ~CConversionFactorFinder() = default;
+
+    // Prevent copy comstructor
+    CConversionFactorFinder (const CConversionFactorFinder&) = delete;
+    // Prevent '=' to create object copy
+    CConversionFactorFinder& operator = (const CConversionFactorFinder&) = delete;
 };
 

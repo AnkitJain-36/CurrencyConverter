@@ -10,6 +10,18 @@ CConversionFactorFinder::CConversionFactorFinder()
     m_curlProxy = &CCurlProxy::instance();
 }
 
+
+/// <summary>
+/// Returns singleton instance
+/// </summary>
+/// <returns>Singleton instance</returns>
+
+CConversionFactorFinder& CConversionFactorFinder::instance()
+{
+    static CConversionFactorFinder instance;
+    return instance;
+}
+
 /// <summary>
 /// Get conversion factor for converting a currency from a defined currency to another
 /// </summary>
@@ -19,9 +31,9 @@ CConversionFactorFinder::CConversionFactorFinder()
 double CConversionFactorFinder::getConversionFactor(const std::string& from, const std::string& to)
 {
     auto readBuffer = m_curlProxy->executeCurlRequest(from, to);
-    if (readBuffer.length() != 0)
+    if (0 != readBuffer.length())
     {
-        // Parse resply
+        // Parse reply
         m_jsonReader->setInput(readBuffer);
         // Get conversion factor
         return m_jsonReader->getCurrencyConversionFactor(to);

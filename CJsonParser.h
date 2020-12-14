@@ -16,7 +16,7 @@ public:
 	/// <summary>
 	/// Constructor (default)
 	/// </summary>
-	CJsonParser();
+	CJsonParser() = default;
 
 	/// <summary>
 	/// Parameterized constructor with json string defined

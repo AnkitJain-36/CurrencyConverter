@@ -34,7 +34,7 @@ protected:
     /// <summary>
     /// curl object
     /// </summary>
-    CURL* m_curl;
+    CURL* m_curl = nullptr;
     /// <summary>
     /// cURL code obtained on executing command
     /// </summary>

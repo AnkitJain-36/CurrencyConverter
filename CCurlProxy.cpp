@@ -40,16 +40,25 @@ std::string CCurlProxy::executeCurlRequest(const std::string& from, const std::s
     return "";
 }
 
+/// <summary>
+/// Constrcutor
+/// </summary>
 CCurlProxy::CCurlProxy()
 {
     //initialize curl
+    m_res = CURLE_OK;
     m_curl = curl_easy_init();
 }
 
+/// <summary>
+/// Destructor
+/// </summary>
 CCurlProxy::~CCurlProxy()
 {
     // Cleanup curl after use
     curl_easy_cleanup(m_curl);
+    m_curl = nullptr;
+    curl_global_cleanup();
 }
 
 /// <summary>
@@ -59,9 +68,9 @@ CCurlProxy::~CCurlProxy()
 /// <returns>Rest command URL</returns>
 std::string CCurlProxy::generateRestRequestURL(const std::string& from)
 {
-    const std::string server = "http://data.fixer.io/api/";
-    const std::string latestCommand = "latest";   // convert command is not available
-    const std::string accessKey = "4bd80c62e4c223602f9038e5512e182d";
+    const std::string server{ "http://data.fixer.io/api/" };
+    const std::string latestCommand{ "latest" };   // convert command is not available
+    const std::string accessKey{ "4bd80c62e4c223602f9038e5512e182d" };
 
     std::string restRequestURL = server + latestCommand + "?access_key=" + accessKey;
     //restRequestURL = restRequestURL + "&base=" + from;
