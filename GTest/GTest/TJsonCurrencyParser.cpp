@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../../CJsonCurrencyParser.h"
+#include "../../json_parser/CJsonCurrencyParser.h"
 
 TEST(getCurrencyConversionFactor, noInputDefined) {
 	CJsonCurrencyParser parser;

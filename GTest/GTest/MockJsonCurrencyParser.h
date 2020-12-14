@@ -1,7 +1,7 @@
 #pragma once
 #include "string"
 #include "pch.h"
-#include "../../CJsonCurrencyParser.h"
+#include "../../json_parser/CJsonCurrencyParser.h"
 
 class MockJsonCurrencyParser:
 	public CJsonCurrencyParser

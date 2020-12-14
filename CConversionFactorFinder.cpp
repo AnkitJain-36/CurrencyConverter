@@ -1,5 +1,4 @@
 #include "CConversionFactorFinder.h"
-#include "CCurlProxy.h"
 
 /// <summary>
 /// Constructor

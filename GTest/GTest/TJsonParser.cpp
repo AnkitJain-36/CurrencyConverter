@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../../CJsonParser.h"
+#include "../../json_parser/CJsonParser.h"
 
 TEST(getValues, noInputDefined) {
 	CJsonParser parser("EUR");

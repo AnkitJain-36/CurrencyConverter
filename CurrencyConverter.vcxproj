@@ -140,19 +140,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CCurlProxy.cpp" />
     <ClCompile Include="CCurrencyConverter.cpp" />
-    <ClCompile Include="CJsonCurrencyParser.cpp" />
-    <ClCompile Include="CJsonParser.cpp" />
+    <ClCompile Include="json_parser\CJsonCurrencyParser.cpp" />
+    <ClCompile Include="json_parser\CJsonParser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CConversionFactorFinder.cpp" />
+    <ClCompile Include="rest_curl\CCurlProxy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCurlProxy.h" />
     <ClInclude Include="CCurrencyConverter.h" />
-    <ClInclude Include="CJsonCurrencyParser.h" />
-    <ClInclude Include="CJsonParser.h" />
     <ClInclude Include="CConversionFactorFinder.h" />
+    <ClInclude Include="json_parser\CJsonCurrencyParser.h" />
+    <ClInclude Include="json_parser\CJsonParser.h" />
+    <ClInclude Include="rest_curl\CCurlProxy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

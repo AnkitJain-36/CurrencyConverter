@@ -1,7 +1,7 @@
 #include <string>
 #include "curl/curl.h"
-#include "CCurlProxy.h"
-#include "CJsonCurrencyParser.h"
+#include "rest_curl/CCurlProxy.h"
+#include "json_parser/CJsonCurrencyParser.h"
 #include "memory"
 
 #pragma once

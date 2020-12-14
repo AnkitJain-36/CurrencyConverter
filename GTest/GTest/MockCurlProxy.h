@@ -1,5 +1,5 @@
 #pragma once
-#include "../../CCurlProxy.h"
+#include "../../rest_curl/CCurlProxy.h"
 #include "pch.h"
 
 class MockCurlProxy :
