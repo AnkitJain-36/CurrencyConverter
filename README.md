@@ -13,7 +13,11 @@ curl project link: https://github.com/curl/curl
 
 Design:
 main.cpp contains the main function which obtains information from the user via command prompt and forwards the info to others classes for processing. The result is then displayed on comand prompt.
+
 CCurrencyConverter acts as a utility file which allows for a static call to convert currency amount from one currency to another. It creates a CConversionFactorFinder class object for obtaining currency conversion factor.
+
 CConversionFactorFinder is a class which uses the CCurlProxy for obtaining data from REST Server. The data is then parsed using CJsonCurrencyParser and the currency conversion factor is read and returned.
+
 cURL requests are managed via CCurlProxy. The class allows for retrieving data from fixer.io using the base and target currency codes
+
 JSON parsing is acomplished via CJsonCurrencyParser. The class inherits CJsonParser which defines how to parse a string (in JSON format) to a JSON::Value. CJsonCurrencyParser adds the functionality to return currency conversion factor after reading the same from the parsed JSON::Value object..
