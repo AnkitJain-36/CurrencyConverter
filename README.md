@@ -30,6 +30,7 @@ To run the code simply build the CurrencyConverter project as an executable (set
 
 To run the code's google test cases, 
 1. Set the CurrencyConverter project as a static library. This can be achieved in Visual Studio in "Project Properties" by going to the "General" tab and setting the Configuration Type to "Static Library (.lib)". 
-2. Clean the solution
-3. Build the GTest Project
-4. Run the tests
+2. For GTest Project, set the precompiled header to "Not Using Precompiled Headers". This can be set in Visual Strudio in "Project Properties" by going to the "C/C++" tab then "Precompiled Header" and set "Precompiled Header" to "Not Using Precompiled Headers".
+3. Clean the solution
+4. Build the GTest Project
+5. Run the test cases.
