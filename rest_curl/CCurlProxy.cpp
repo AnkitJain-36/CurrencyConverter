@@ -1,4 +1,5 @@
 #include "CCurlProxy.h"
+#include "iostream"
 
 /// <summary>
 /// Get singleton instance
@@ -33,6 +34,11 @@ std::string CCurlProxy::executeCurlRequest(const std::string& from, const std::s
 
         // Peform cURL function
         m_res = curl_easy_perform(m_curl);
+
+        if (CURLE_OK != m_res)
+        {
+            std::cout << "Error in CURL call. Error Code:" << m_res << std::endl;
+        }
 
         return readBuffer;
     }

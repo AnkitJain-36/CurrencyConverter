@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="CCurrencyConverter.h" />
     <ClInclude Include="CConversionFactorFinder.h" />
+    <ClInclude Include="ErrorStrings.h" />
     <ClInclude Include="json_parser\CJsonCurrencyParser.h" />
     <ClInclude Include="json_parser\CJsonParser.h" />
     <ClInclude Include="rest_curl\CCurlProxy.h" />

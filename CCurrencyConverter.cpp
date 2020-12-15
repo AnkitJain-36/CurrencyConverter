@@ -1,5 +1,6 @@
 #include "CCurrencyConverter.h"
 #include "CConversionFactorFinder.h"
+#include "ErrorStrings.h"
 
 /// <summary>
 /// Static function for converting defined amount of money from one courrency to another
@@ -7,17 +8,20 @@
 /// <param name="from">currency code of the currency the amount is currently in</param>
 /// <param name="to">currency code of the currency the amount is to be converted to</param>
 /// <param name="amount">amount of money</param>
+/// <param name="err">error string</param>
 /// <returns>converted amount</returns>
-double CCurrencyConverter::convert(const std::string& from, const std::string& to, const double amount)
+double CCurrencyConverter::convert(const std::string& from, const std::string& to, const double amount, std::string& err)
 {
-	double conversionFactor = CConversionFactorFinder::instance().getConversionFactor(from, to);
+	auto conversionFactor = CConversionFactorFinder::instance().getConversionFactor(from, to);
 	// CURL request failure
 	if (-1 == conversionFactor)
 	{
-		return -1;
+		err = Error::SERVER_NOT_RESPONDING;
 	}
-	else
+	// JSON Parse Failure
+	else if (0 == conversionFactor)
 	{
-		return amount * conversionFactor;
+		err = Error::PARSE_INFO_NOT_FOUND;
 	}
+	return amount * conversionFactor;
 }

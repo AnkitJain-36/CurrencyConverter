@@ -13,7 +13,8 @@ public:
 	/// <param name="from">currency code of the currency the amount is currently in</param>
 	/// <param name="to">currency code of the currency the amount is to be converted to</param>
 	/// <param name="amount">amount of money</param>
+	/// <param name="err">error string</param>
 	/// <returns>converted amount</returns>
-	static double convert(const std::string& from, const std::string& to, const double amount);
+	static double convert(const std::string& from, const std::string& to, const double amount, std::string& err);
 };
 
